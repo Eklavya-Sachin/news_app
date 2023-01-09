@@ -6,5 +6,5 @@ class AppColors {
 
   static const boldTextColor = Color(0xFFffffff);
   static const whiteTextColor = Color(0xFFf2f2f2);
-  static const greyTextColor = Color.fromARGB(255, 106, 100, 100);
+  static const greyTextColor = Color(0xffbababa);
 }

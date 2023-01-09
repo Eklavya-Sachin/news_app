@@ -1,24 +1,33 @@
-import 'package:google_fonts/google_fonts.dart';
+import 'package:news_app/app/constants/app_fonts.dart';
 
 import 'app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextStyle {
-  static TextStyle textStyleBold = GoogleFonts.robotoSlab(
-    fontWeight: FontWeight.bold,
+  static TextStyle textStyleBold = const TextStyle(
+    fontFamily: AppFonts.robotoSlab,
+    fontWeight: FontWeight.w700,
     color: AppColors.boldTextColor,
-    fontSize: 20,
+    fontSize: 29,
   );
 
-  static TextStyle textStyleRegular = GoogleFonts.robotoSlab(
-    fontWeight: FontWeight.w500,
+  static TextStyle textStyleRegular = const TextStyle(
+    fontFamily: AppFonts.robotoSlab,
+    fontWeight: FontWeight.w400,
     color: AppColors.whiteTextColor,
     fontSize: 20,
   );
 
-  static TextStyle greyTextStyleBold = GoogleFonts.robotoSlab(
-    fontWeight: FontWeight.bold,
+  static TextStyle greyTextStyleBold14 = const TextStyle(
+    fontFamily: AppFonts.robotoSlab,
+    fontWeight: FontWeight.w700,
     color: AppColors.greyTextColor,
-    fontSize: 12,
+    fontSize: 14,
+  );
+  static TextStyle greyTextStyleBold12 = const TextStyle(
+    fontFamily: AppFonts.robotoSlab,
+    fontWeight: FontWeight.w700,
+    color: AppColors.greyTextColor,
+    fontSize: 14,
   );
 }
