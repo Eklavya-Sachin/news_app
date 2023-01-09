@@ -28,6 +28,6 @@ class CustomTextStyle {
     fontFamily: AppFonts.robotoSlab,
     fontWeight: FontWeight.w700,
     color: AppColors.greyTextColor,
-    fontSize: 14,
+    fontSize: 12,
   );
 }
