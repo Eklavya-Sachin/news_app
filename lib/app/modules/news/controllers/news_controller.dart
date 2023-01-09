@@ -1,9 +1,21 @@
 import 'package:get/get.dart';
+import '../../../models/news_model_model.dart';
+import 'package:news_app/app/services/api_services.dart';
 
 class NewsController extends GetxController {
-  //TODO: Implement HomeController
+  RxBool isLoading = true.obs;
+  List<News> newsArticles = <News>[].obs;
 
-  final count = 0.obs;
+  @override
+  void onInit() {
+    getAllNewsArticles();
+    super.onInit();
+  }
 
-  void increment() => count.value++;
+  Future<void> getAllNewsArticles() async {
+    isLoading;
+    final responseJson = await ApiServices.getAllNewsArticles();
+    newsArticles.add(responseJson);
+    isLoading.toggle();
+  }
 }
