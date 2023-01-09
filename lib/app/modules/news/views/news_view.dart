@@ -1,6 +1,9 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:news_app/app/routes/app_pages.dart';
+import '../../../constants/api_constants.dart';
 import '../../../constants/app_colors.dart';
+import '../../../constants/app_fonts.dart';
 import '../controllers/news_controller.dart';
 import '../../../constants/custom_text.dart';
 import 'package:news_app/app/widgets/news_card.dart';
@@ -15,22 +18,49 @@ class NewsView extends GetView<NewsController> {
         elevation: 3,
         backgroundColor: AppColors.appBarColor,
         titleTextStyle: CustomTextStyle.textStyleBold,
-        title: const Text('H E A D L I N E S'),
-        centerTitle: true,
-      ),
-      body: ListView.builder(
-        itemCount: 10,
-        itemBuilder: (context, index) => InkWell(
-          onTap: () {},
-          child: const NewsCard(
-            newsBgImage:
-                "https://www.androidauthority.com/wp-content/uploads/2023/01/Sony-Honda-Car-Afeela-CES-2023.jpg",
-            newsTitle:
-                "Would you buy an Afeela, the car made by Sony and Honda?",
-            newsAuthor: "CNN",
-            publishedAt: "2023-01-07T19:52:05Z",
+        title: const Text(
+          'HEADLINES',
+          style: TextStyle(
+            fontFamily: AppFonts.robotoSlab,
+            fontWeight: FontWeight.w700,
+            color: AppColors.boldTextColor,
+            fontSize: 29,
+            letterSpacing: 4.0,
           ),
         ),
+        centerTitle: true,
+      ),
+      body: Obx(
+        () => controller.isLoading.value
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : ListView.builder(
+                itemCount: controller.newsArticles[0].articles?.length ?? 100,
+                itemBuilder: (context, index) => InkWell(
+                  onTap: () => Get.toNamed(
+                    Routes.NEWS_DETAIL,
+                    arguments: [
+                      controller.newsArticles[0].articles?[index].urlToImage
+                    ],
+                  ),
+                  child: NewsCard(
+                    newsBgImage: controller
+                            .newsArticles[0].articles?[index].urlToImage ??
+                        imageUrlFromGoogle,
+                    title: controller.newsArticles[0].articles?[index].title ??
+                        "NA",
+                    newsPublisher: controller
+                            .newsArticles[0].articles?[index].source?.name ??
+                        "NA",
+                    publishedAt: DateTime.parse(
+                      controller.newsArticles[0].articles?[index].publishedAt
+                              .toString() ??
+                          "N/A",
+                    ),
+                  ),
+                ),
+              ),
       ),
     );
   }
