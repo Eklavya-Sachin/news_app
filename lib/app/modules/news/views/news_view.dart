@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:news_app/app/routes/app_pages.dart';
 import '../../../constants/api_constants.dart';
 import '../../../constants/app_colors.dart';
 import '../../../constants/app_fonts.dart';
@@ -38,12 +37,7 @@ class NewsView extends GetView<NewsController> {
             : ListView.builder(
                 itemCount: controller.newsArticles[0].articles?.length ?? 100,
                 itemBuilder: (context, index) => InkWell(
-                  onTap: () => Get.toNamed(
-                    Routes.NEWS_DETAIL,
-                    arguments: [
-                      controller.newsArticles[0].articles?[index].urlToImage
-                    ],
-                  ),
+                  onTap: () => controller.newsDetail(index),
                   child: NewsCard(
                     newsBgImage: controller
                             .newsArticles[0].articles?[index].urlToImage ??

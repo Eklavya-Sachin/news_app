@@ -18,7 +18,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.NEWS_DETAIL,
-      page: () => NewsDetailView(),
+      page: () => const NewsDetailView(),
       binding: NewsDetailBinding(),
     ),
   ];
